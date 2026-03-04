@@ -32,7 +32,9 @@
 
 4. 指定你所喜欢的快捷键<img width="1198" height="798" alt="Snipaste_2026-03-05_01-30-53" src="https://github.com/user-attachments/assets/cd7f9d67-54f3-4ee2-9bea-e6a702a80630" />
 
-5. 激活使用，示例：<img width="798" height="177" alt="Snipaste_2026-03-05_01-31-47" src="https://github.com/user-attachments/assets/9a6b2bf3-bcde-4118-9516-bfa4310c2fb8" />
+5. 激活使用，示例：
+   
+   <img width="798" height="177" alt="Snipaste_2026-03-05_01-31-47" src="https://github.com/user-attachments/assets/9a6b2bf3-bcde-4118-9516-bfa4310c2fb8" />
 
    <img width="798" height="177" alt="Snipaste_2026-03-05_01-32-31" src="https://github.com/user-attachments/assets/fd3bfdeb-1f56-45f4-9155-9d2ca072a6e5" />
 
