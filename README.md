@@ -26,13 +26,18 @@
 
 ## 🚀 快速开始
 
-1. 将插件（`baidutranslater.py`）直接复制到 Wox 插件文件夹下（`C:\Users\用户名\.wox\wox-user\plugins\scripts\`）。
-2. 安装 Python 依赖
-3. 在wox2中打开插件管理器并重载本地插件<img width="1198" height="798" alt="Snipaste_2026-03-05_01-29-18" src="https://github.com/user-attachments/assets/da871dec-d431-4b06-88e6-6b6b1e1beb02" />
+1. 激活 wox自己的`stroe`插件管理器
+2. 输入 `store create baidutranslater` 命令，此时会自行打开插件目录的同时创建`baidutranslater.py`模板文件
+3. 将插件（`baidutranslater.py`）直接复制到 Wox 插件文件夹下替换模板文件
+4. 安装 Python 依赖，替换`baidutranslater.py`中的APP_IP和API_KEY参数
+   ```shell
+      pip install requests
+   ```
+5. 在wox2中打开插件管理器并重载本地插件<img width="1198" height="798" alt="Snipaste_2026-03-05_01-29-18" src="https://github.com/user-attachments/assets/da871dec-d431-4b06-88e6-6b6b1e1beb02" />
 
-4. 指定你所喜欢的快捷键<img width="1198" height="798" alt="Snipaste_2026-03-05_01-30-53" src="https://github.com/user-attachments/assets/cd7f9d67-54f3-4ee2-9bea-e6a702a80630" />
+6. 指定你所喜欢的快捷键<img width="1198" height="798" alt="Snipaste_2026-03-05_01-30-53" src="https://github.com/user-attachments/assets/cd7f9d67-54f3-4ee2-9bea-e6a702a80630" />
 
-5. 激活使用，示例：
+7. 激活使用，示例：
    
    <img width="798" height="177" alt="Snipaste_2026-03-05_01-31-47" src="https://github.com/user-attachments/assets/9a6b2bf3-bcde-4118-9516-bfa4310c2fb8" />
 
