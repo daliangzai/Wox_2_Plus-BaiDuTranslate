@@ -1,45 +1,79 @@
 # 百度翻译 Wox 插件
 
-基于 **Wox 2.0** 框架开发的百度翻译插件，支持输入关键词后调用百度开放平台通用翻译 API 获取实时翻译结果。
+一个基于 Wox 2 Script Plugin 的百度翻译插件。输入触发词后，会调用百度通用翻译 API，并把结果直接显示在 Wox 中，支持一键复制。
 
-使用者输入关键字即可快速翻译文字，并在结果中点击复制翻译内容。
+## 功能
 
----
+- 自动检测源语言
+- 默认翻译为中文
+- 结果支持直接复制到剪贴板
+- 无第三方 Python 依赖
+- 支持本地手动调试
 
-## 🔍 功能
+## 触发词
 
-- 支持中英互译及其他语言自动检测  
-- 输入内容后调用百度翻译 API 实时返回结果  
-- 支持关键词触发  
-- 结果可一键复制到剪贴板
+- `fy`
+- `translate`
 
----
+## 配置
 
-## ⚙️ 激活关键词
+推荐直接在 Wox 的插件设置页里填写这些项：
 
-| 关键词 | 功能 |
-|--------|------|
-| `fy` | 翻译输入内容 |
-| `translate` | 翻译输入内容 |
+- `Baidu APP ID`
+- `Baidu APP KEY`
+- `Target Language`
 
----
+其中 `Target Language` 默认为 `zh`，可改为 `en`、`jp`、`kor` 等百度翻译支持的语言代码。
 
-## 🚀 快速开始
+插件也兼容从环境变量读取百度翻译凭证：
 
-1. 激活 wox自己的`stroe`插件管理器
-2. 输入 `store create baidutranslater` 命令，此时会自行打开插件目录的同时创建`baidutranslater.py`模板文件
-3. 将插件（`baidutranslater.py`）直接复制到 Wox 插件文件夹下替换模板文件
-4. 安装 Python 依赖，替换`baidutranslater.py`中的APP_IP和API_KEY参数
-   ```shell
-      pip install requests
-   ```
-5. 在wox2中打开插件管理器并重载本地插件<img width="1198" height="798" alt="Snipaste_2026-03-05_01-29-18" src="https://github.com/user-attachments/assets/da871dec-d431-4b06-88e6-6b6b1e1beb02" />
+- `BAIDU_TRANSLATE_APP_ID`
+- `BAIDU_TRANSLATE_APP_KEY`
+- `BAIDU_TRANSLATE_TARGET_LANGUAGE`
 
-6. 指定你所喜欢的快捷键<img width="1198" height="798" alt="Snipaste_2026-03-05_01-30-53" src="https://github.com/user-attachments/assets/cd7f9d67-54f3-4ee2-9bea-e6a702a80630" />
+如果你不想配环境变量，也可以直接修改 [baidutranslater.py](./baidutranslater.py) 里的默认值。
 
-7. 激活使用，示例：
-   
-   <img width="798" height="177" alt="Snipaste_2026-03-05_01-31-47" src="https://github.com/user-attachments/assets/9a6b2bf3-bcde-4118-9516-bfa4310c2fb8" />
+当前优先级是：插件设置页 > 环境变量 > 脚本默认值。
 
-   <img width="798" height="177" alt="Snipaste_2026-03-05_01-32-31" src="https://github.com/user-attachments/assets/fd3bfdeb-1f56-45f4-9155-9d2ca072a6e5" />
+## 安装
 
+1. 在 Wox 中启用 `store` 插件。
+2. 执行 `store create baidutranslater`，让 Wox 创建脚本插件目录和模板文件。
+3. 用仓库里的 [baidutranslater.py](./baidutranslater.py) 替换模板文件。
+4. 在 Wox 插件设置页中配置百度翻译 API 的 `APP ID` 和 `APP KEY`。
+5. 按需调整 `Target Language`，默认是 `zh`。
+6. 在 Wox 插件管理器中重载本地插件。
+
+## 使用
+
+示例：
+
+```text
+fy hello world
+translate good morning
+```
+
+如果未输入内容，插件会提示你继续输入。
+
+如果未配置 API 凭证，插件会提示先在插件设置页配置，而不是直接请求失败。
+
+## 本地调试
+
+可以直接运行脚本：
+
+```powershell
+python .\baidutranslater.py
+```
+
+随后输入待翻译文本即可。脚本在非 Wox 环境下会进入手动调试模式。
+
+## 修复说明
+
+当前版本相较初始实现，主要修复了这些问题：
+
+- 移除了重复定义的 `translate()` 函数
+- 去掉了 `requests` 依赖，改用标准库 `urllib`
+- 增加了网络异常、JSON 解析异常和返回格式校验
+- 兼容了 Wox 调用和本地调试两种入口
+- 处理了 Windows 控制台下的 UTF-8 输出问题
+- 增加了 `SettingDefinitions`，允许在 Wox 插件设置页配置 `APP ID`、`APP KEY` 和目标语言
